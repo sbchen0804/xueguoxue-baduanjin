@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>「學國學網」八段錦教學</title>
+  <title>八段錦教學</title>
   <style>
     :root {
       color-scheme: light;
@@ -15,7 +15,6 @@
       --accent: #2f6f73;
       --accent-dark: #204d51;
       --gold: #b7791f;
-      --rose: #a23b55;
       --shadow: 0 16px 40px rgba(31, 41, 51, 0.08);
     }
 
@@ -32,7 +31,7 @@
       font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", Arial, sans-serif;
       color: var(--ink);
       background:
-        linear-gradient(135deg, rgba(47, 111, 115, 0.10), rgba(183, 121, 31, 0.10) 45%, rgba(162, 59, 85, 0.08)),
+        linear-gradient(135deg, rgba(47, 111, 115, 0.10), rgba(183, 121, 31, 0.10) 45%, rgba(47, 111, 115, 0.08)),
         var(--paper);
       line-height: 1.6;
     }
@@ -46,7 +45,7 @@
       top: 0;
       z-index: 10;
       border-bottom: 1px solid rgba(215, 222, 232, 0.9);
-      background: rgba(248, 250, 252, 0.92);
+      background: rgba(248, 250, 252, 0.94);
       backdrop-filter: blur(14px);
     }
 
@@ -65,6 +64,7 @@
       font-size: clamp(18px, 2vw, 22px);
       white-space: nowrap;
       letter-spacing: 0;
+      text-decoration: none;
     }
 
     .navlinks {
@@ -100,6 +100,13 @@
       padding: 54px 0 30px;
     }
 
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 34px;
+    }
+
     .eyebrow {
       margin: 0 0 10px;
       color: var(--accent-dark);
@@ -108,17 +115,56 @@
 
     h1 {
       margin: 0;
-      max-width: 860px;
-      font-size: clamp(34px, 6vw, 66px);
-      line-height: 1.08;
+      max-width: 760px;
+      font-size: clamp(40px, 6.5vw, 76px);
+      line-height: 1.05;
       letter-spacing: 0;
     }
 
     .lede {
-      max-width: 760px;
+      max-width: 780px;
       margin: 18px 0 0;
       color: var(--muted);
       font-size: clamp(17px, 2vw, 20px);
+    }
+
+    .logo-panel {
+      min-width: 190px;
+      display: grid;
+      justify-items: center;
+      gap: 10px;
+      padding: 18px;
+      border: 1px solid rgba(47, 111, 115, 0.18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .logo-panel img {
+      width: 120px;
+      max-height: 120px;
+      object-fit: contain;
+    }
+
+    .logo-fallback {
+      width: 120px;
+      min-height: 92px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid var(--accent);
+      border-radius: 50%;
+      color: var(--accent-dark);
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
+    .builder-note {
+      color: var(--accent-dark);
+      font-size: 20px;
+      font-weight: 900;
     }
 
     main {
@@ -169,10 +215,6 @@
       box-shadow: var(--shadow);
     }
 
-    .video-card.feature {
-      grid-column: span 1;
-    }
-
     .video-frame {
       position: relative;
       width: 100%;
@@ -189,33 +231,38 @@
     }
 
     .video-body {
-      padding: 16px 16px 18px;
+      display: grid;
+      justify-items: center;
+      padding: 17px 16px 19px;
+      text-align: center;
     }
 
     .lesson {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       min-height: 28px;
-      margin-bottom: 9px;
-      padding: 3px 9px;
+      margin-bottom: 10px;
+      padding: 3px 10px;
       border-radius: 999px;
       background: rgba(47, 111, 115, 0.10);
       color: var(--accent-dark);
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 800;
     }
 
     h3 {
-      margin: 0 0 14px;
-      font-size: 18px;
-      line-height: 1.38;
+      margin: 0 0 15px;
+      font-size: clamp(21px, 2.1vw, 28px);
+      line-height: 1.25;
       letter-spacing: 0;
+      text-align: center;
     }
 
     .watch-link {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
       min-height: 40px;
       padding: 8px 13px;
       border-radius: 6px;
@@ -227,6 +274,38 @@
 
     .watch-link:hover,
     .watch-link:focus-visible {
+      background: var(--accent-dark);
+      outline: none;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 28px;
+      z-index: 20;
+      width: 58px;
+      height: 58px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #05080d;
+      color: #ffffff;
+      text-decoration: none;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.28);
+    }
+
+    .back-to-top::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border-top: 6px solid currentColor;
+      border-left: 6px solid currentColor;
+      transform: rotate(45deg) translate(4px, 4px);
+    }
+
+    .back-to-top:hover,
+    .back-to-top:focus-visible {
       background: var(--accent-dark);
       outline: none;
     }
@@ -256,6 +335,14 @@
         justify-content: center;
       }
 
+      .hero-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-panel {
+        justify-self: start;
+      }
+
       .video-grid {
         grid-template-columns: 1fr;
       }
@@ -265,25 +352,41 @@
         flex-direction: column;
         gap: 8px;
       }
+
+      .back-to-top {
+        right: 14px;
+        bottom: 18px;
+        width: 52px;
+        height: 52px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="topbar">
     <nav class="nav" aria-label="頁面導覽">
-      <a class="brand" href="#top">「學國學網」八段錦教學</a>
+      <a class="brand" href="#top">八段錦教學</a>
       <div class="navlinks">
         <a href="#full-practice">完整動作教學</a>
         <a href="#single-lessons">1 到 8 式單獨教學</a>
-        <a href="#basics">發刊詞與基本功</a>
+        <a href="#basics">基本功及其他</a>
       </div>
     </nav>
   </div>
 
   <header id="top">
-    <p class="eyebrow">李曼老師｜八段錦教學影片整理</p>
-    <h1>「學國學網」八段錦教學</h1>
-    <p class="lede">依照學習順序整理成三個項目，學員可用上方錨點快速跳到完整練習、單式教學，或課前基本功。</p>
+    <div class="hero-layout">
+      <div>
+        <p class="eyebrow">李曼老師｜八段錦教學影片整理</p>
+        <h1>八段錦教學</h1>
+        <p class="lede">目的：方便新竹鬆筋學員回家日常八段錦練習時，便於取得八段錦教學資料。</p>
+      </div>
+      <div class="logo-panel" aria-label="新竹鬆筋第三大隊整理建置">
+        <img src="assets/logo_ysdgood.heic" alt="新竹鬆筋 Logo" onerror="this.hidden=true; this.nextElementSibling.hidden=false;">
+        <span class="logo-fallback" hidden>新竹<br>鬆筋</span>
+        <div class="builder-note">第三大隊整理建置</div>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -293,7 +396,7 @@
         <span class="count">第 12、13 節</span>
       </div>
       <div class="video-grid">
-        <article class="video-card feature">
+        <article class="video-card">
           <div class="video-frame">
             <iframe src="https://www.youtube.com/embed/acgew9JEH1c" title="第 12 節 八段錦完整動作練習" allowfullscreen></iframe>
           </div>
@@ -304,7 +407,7 @@
           </div>
         </article>
 
-        <article class="video-card feature">
+        <article class="video-card">
           <div class="video-frame">
             <iframe src="https://www.youtube.com/embed/moYiLzcj89U" title="第 13 節 八段錦完整動作練習（呼吸版）" allowfullscreen></iframe>
           </div>
@@ -415,7 +518,7 @@
 
     <section id="basics" aria-labelledby="basics-title">
       <div class="section-head">
-        <h2 id="basics-title">發刊詞與基本功</h2>
+        <h2 id="basics-title">基本功及其他</h2>
         <span class="count">第 1、2 節</span>
       </div>
       <div class="video-grid">
@@ -444,8 +547,10 @@
     </section>
   </main>
 
+  <a class="back-to-top" href="#top" aria-label="回到頁首"></a>
+
   <footer>
-    影片來源：YouTube「學國學網」頻道。此頁僅整理課程連結，方便學員依段落觀看。
+    影片來源：YouTube「學國學網」頻道。此頁整理為新竹鬆筋學員日常練習索引，方便快速取得八段錦教學資料。
   </footer>
 </body>
 </html>
