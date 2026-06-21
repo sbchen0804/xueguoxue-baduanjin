@@ -4,6 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>新竹鬆筋 -八段錦學習資料</title>
+  <meta name="description" content="新竹鬆筋第三大隊整理的八段錦學習資料，包含李曼老師教學影片與補充課程資料。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="新竹鬆筋 - 八段錦學習資料">
+  <meta property="og:description" content="李曼老師八段錦教學影片與補充資料整理。">
+  <meta property="og:image" content="https://sbchen0804.github.io/xueguoxue-baduanjin/assets/Baduanjin_062101.png">
+  <meta property="og:url" content="https://sbchen0804.github.io/xueguoxue-baduanjin/?v=V1.0">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="新竹鬆筋 - 八段錦學習資料">
+  <meta name="twitter:description" content="李曼老師八段錦教學影片與補充資料整理。">
+  <meta name="twitter:image" content="https://sbchen0804.github.io/xueguoxue-baduanjin/assets/Baduanjin_062101.png">
   <style>
     :root {
       color-scheme: light;
@@ -15,6 +25,7 @@
       --accent: #2f6f73;
       --accent-dark: #204d51;
       --gold: #b7791f;
+      --paper-wash: rgba(255, 255, 255, 0.70);
       --shadow: 0 16px 40px rgba(31, 41, 51, 0.08);
     }
 
@@ -30,10 +41,57 @@
       margin: 0;
       font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", Arial, sans-serif;
       color: var(--ink);
-      background:
-        linear-gradient(135deg, rgba(47, 111, 115, 0.10), rgba(183, 121, 31, 0.10) 45%, rgba(47, 111, 115, 0.08)),
-        var(--paper);
+      background: var(--paper);
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    body::before {
+      background:
+        radial-gradient(ellipse at 12% 18%, rgba(47, 111, 115, 0.13), transparent 34%),
+        radial-gradient(ellipse at 88% 14%, rgba(183, 121, 31, 0.12), transparent 30%),
+        radial-gradient(ellipse at 50% 86%, rgba(47, 111, 115, 0.10), transparent 38%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(240, 246, 243, 0.88));
+      animation: inkFlow 22s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      z-index: -1;
+      opacity: 0.28;
+      background:
+        linear-gradient(115deg, transparent 0 28%, rgba(47, 111, 115, 0.10) 31%, transparent 36% 100%),
+        linear-gradient(72deg, transparent 0 52%, rgba(183, 121, 31, 0.08) 56%, transparent 61% 100%);
+      filter: blur(10px);
+      animation: washDrift 30s ease-in-out infinite alternate;
+    }
+
+    @keyframes inkFlow {
+      from {
+        transform: translate3d(-1.5%, -1%, 0) scale(1);
+      }
+
+      to {
+        transform: translate3d(1.5%, 1%, 0) scale(1.035);
+      }
+    }
+
+    @keyframes washDrift {
+      from {
+        transform: translateX(-2%) rotate(-1deg);
+      }
+
+      to {
+        transform: translateX(2%) rotate(1deg);
+      }
     }
 
     a {
@@ -45,7 +103,7 @@
       top: 0;
       z-index: 10;
       border-bottom: 1px solid rgba(215, 222, 232, 0.9);
-      background: rgba(248, 250, 252, 0.94);
+      background: rgba(248, 250, 252, 0.88);
       backdrop-filter: blur(14px);
     }
 
@@ -81,7 +139,7 @@
       padding: 8px 12px;
       border: 1px solid var(--line);
       border-radius: 6px;
-      background: var(--panel);
+      background: rgba(255, 255, 255, 0.88);
       text-decoration: none;
       font-size: 14px;
       font-weight: 700;
@@ -127,7 +185,7 @@
       margin: 18px 0 0;
       color: var(--muted);
       font-size: clamp(17px, 2vw, 20px);
-      font-weight: 800;
+      font-weight: 500;
     }
 
     .logo-panel {
@@ -171,7 +229,7 @@
       margin: 14px 0 0;
       color: #c00000;
       font-size: clamp(18px, 2.2vw, 24px);
-      font-weight: 900;
+      font-weight: 500;
       line-height: 1.45;
     }
 
@@ -221,6 +279,37 @@
       border-radius: 8px;
       background: var(--panel);
       box-shadow: var(--shadow);
+    }
+
+    .material-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .material-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.90);
+      box-shadow: var(--shadow);
+    }
+
+    .material-card h3 {
+      margin: 0 0 6px;
+      font-size: clamp(21px, 2vw, 26px);
+      text-align: left;
+    }
+
+    .material-meta {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 500;
     }
 
     .video-frame {
@@ -337,17 +426,22 @@
       .navlinks {
         justify-content: flex-start;
         width: 100%;
-        flex-wrap: nowrap;
-        gap: 5px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 7px;
       }
 
       .navlinks a {
-        flex: 1 1 0;
+        flex: none;
+        aspect-ratio: 1;
         justify-content: center;
+        text-align: center;
         min-height: 34px;
-        padding: 6px 5px;
-        font-size: clamp(11px, 3.1vw, 13px);
-        white-space: nowrap;
+        padding: 6px;
+        border-radius: 999px;
+        font-size: clamp(11px, 2.9vw, 13px);
+        line-height: 1.15;
+        white-space: normal;
       }
 
       .hero-layout {
@@ -374,6 +468,15 @@
         grid-template-columns: 1fr;
       }
 
+      .material-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .material-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
       .section-head {
         align-items: flex-start;
         flex-direction: column;
@@ -397,6 +500,7 @@
         <a href="#full-practice">完整動作</a>
         <a href="#single-lessons">各式教學</a>
         <a href="#basics">其他(基本功)</a>
+        <a href="#supplemental">補充資料</a>
       </div>
     </nav>
   </div>
@@ -572,12 +676,37 @@
         </article>
       </div>
     </section>
+
+    <section id="supplemental" aria-labelledby="supplemental-title">
+      <div class="section-head">
+        <h2 id="supplemental-title">補充資料</h2>
+        <span class="count">V1.0</span>
+      </div>
+      <div class="material-grid">
+        <article class="material-card">
+          <div>
+            <h3>class_material_01</h3>
+            <p class="material-meta">PDF 補充講義</p>
+          </div>
+          <a class="watch-link" href="assets/materials/class_material_01.pdf" target="_blank" rel="noopener">開啟 PDF</a>
+        </article>
+
+        <article class="material-card">
+          <div>
+            <h3>class_material_02</h3>
+            <p class="material-meta">PDF 補充講義</p>
+          </div>
+          <a class="watch-link" href="assets/materials/class_material_02.pdf" target="_blank" rel="noopener">開啟 PDF</a>
+        </article>
+      </div>
+    </section>
   </main>
 
   <a class="back-to-top" href="#top" aria-label="回到頁首"></a>
 
   <footer>
-    影片來源：YouTube「學國學網」頻道。此頁整理為新竹鬆筋學員日常練習索引，方便快速取得八段錦教學資料。
+    <p>影片來源：YouTube「學國學網」頻道。此頁整理為新竹鬆筋學員日常練習索引，方便快速取得八段錦教學資料。</p>
+    <p>版本：V1.0 · 點閱人次 <img src="https://hits.sh/sbchen0804.github.io/xueguoxue-baduanjin.svg?label=&color=2f6f73&labelColor=f8fafc" alt="網頁點閱人次"></p>
   </footer>
 </body>
 </html>
